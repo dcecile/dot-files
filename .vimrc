@@ -1,8 +1,5 @@
 set enc=utf-8
 set nocompatible
-"set verbose=1
-set diffexpr=
-let $TMP="c:\\tmp"
 
 " Windows only looks in 'vimfiles' by default
 set runtimepath+=~/.vim
