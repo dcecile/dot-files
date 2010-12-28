@@ -1,11 +1,14 @@
+" Unicode files
 set enc=utf-8
+
+" Activate improved features
 set nocompatible
 
 " Windows only looks in 'vimfiles' by default
 set runtimepath+=~/.vim
 
 " Regular backspace
-set backspace=2
+set backspace=indent,eol,start
 
 " Smart search casing
 set ignorecase
@@ -17,10 +20,22 @@ set incsearch
 " Cool statusline
 set statusline=%<%f\ %m%a%=%([%R%H%Y]%)\ %-19(%3l\ of\ %L,%c%)%P
 
-" Spaces for tabs
-set softtabstop=4
-set shiftwidth=4
+" Highlight lines that are too long
+"syn match Search /\.\%>72v/
+
+" Always write (don't ask)
+:au FocusLost * :wa
+
+" Save on quit
+set autowriteall
+
+" Spaces for tabs, 2 spaces by default
+set softtabstop=2
+set shiftwidth=2
 set expandtab
+
+" Only use 4 spaces for these files
+au FileType cpp,cs,java,xml setlocal softtabstop=4 shiftwidth=4
 
 " Background buffers
 set hidden
@@ -28,8 +43,8 @@ set hidden
 " Line numbers
 set nu
 
-" Give verbose file completion
-set wildchar=<Tab> wildmenu wildmode=full
+" Give verbose file completion, don't precomplete
+set wildchar=<Tab> wildmenu wildmode=longest:full
 
 " Map ,, to buffer explorer
 nnoremap ,, :BufExplorer<CR>j
@@ -47,15 +62,13 @@ set laststatus=2
 set mousefocus
 
 " Don't autocontinue comments
-if has("autocmd") 
-  augroup vimrcEx 
-  au! 
-  au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-  augroup END 
-endif
+augroup vimrcEx 
+au! 
+au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup END 
 
-" Automatic indentation
-" set autoindent
+" Manual block indentation (not syntax-triggered)
+set autoindent
 
 " Custom colours
 syntax enable
@@ -95,3 +108,6 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+" Python
+let python_highlight_builtins=1

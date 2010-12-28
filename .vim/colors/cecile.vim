@@ -34,10 +34,10 @@ hi Operator 	ctermfg=darkcyan guifg=#C080FF gui=none
 "hi xmlEndTag  	ctermfg=darkcyan guifg=#C080FF gui=none
 "hi xmlTagName  	ctermfg=darkcyan guifg=#C080FF gui=none
 
-
 " Constant
 hi Constant		ctermfg=darkmagenta guifg=#FF00BF gui=none
 hi schemeError	ctermfg=darkmagenta guifg=#FF00BF gui=none
+hi pythonBuiltinObj	ctermfg=darkmagenta guifg=#FF00BF gui=none
 
 " Cursor stuff
 hi Cursor		guifg=bg guibg=#AFB2AC
