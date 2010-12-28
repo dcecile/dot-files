@@ -1,0 +1,8 @@
+" Exit Visual mode
+vnoremap <C-[> <Esc>
+
+" Searching
+set ignorecase
+set smartcase
+set hlsearch
+
