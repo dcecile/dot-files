@@ -23,4 +23,3 @@ set mouseshape=i-r:beam,s:updown,sd:udsizing,vs:leftright,vd:lrsizing,m:no,ml:up
 
 " Correct background color
 set background=dark
-
