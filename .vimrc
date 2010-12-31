@@ -111,3 +111,6 @@ vnoremap <silent> # :<C-U>
 
 " Python
 let python_highlight_builtins=1
+
+" Don't beep
+set visualbell t_vb=

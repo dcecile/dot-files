@@ -23,3 +23,6 @@ set mouseshape=i-r:beam,s:updown,sd:udsizing,vs:leftright,vd:lrsizing,m:no,ml:up
 
 " Correct background color
 set background=dark
+
+" Don't beep (needs to be set again for GUI)
+set visualbell t_vb=
