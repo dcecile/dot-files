@@ -21,15 +21,16 @@ hi Comment		ctermfg=darkgreen guifg=#80FF80
 
 " Type
 hi Type			ctermfg=grey  guifg=#BFD9FF gui=none
+hi Special	ctermfg=grey  guifg=#BFD9FF gui=none
+hi Structure	ctermfg=grey  guifg=#BFD9FF gui=none
 
 " Keyword
-hi Structure	ctermfg=darkcyan guifg=#C080FF gui=bold
-hi Typedef  	ctermfg=darkcyan guifg=#C080FF gui=bold
-hi Statement	ctermfg=darkcyan guifg=#C080FF gui=bold
-hi Special		ctermfg=darkcyan guifg=#C080FF gui=bold
-hi Todo			ctermfg=darkcyan guifg=#C080FF guibg=bg gui=bold
+hi Typedef  	ctermfg=darkcyan guifg=#C080FF gui=none
+hi Statement	ctermfg=darkcyan guifg=#C080FF gui=none
+hi Todo			ctermfg=darkcyan guifg=#C080FF guibg=bg gui=none
 hi PreProc		ctermfg=darkcyan guifg=#C080FF gui=none
 hi Operator 	ctermfg=darkcyan guifg=#C080FF gui=none
+hi luaFunction 	ctermfg=darkcyan guifg=#C080FF gui=none
 "hi xmlTag     	ctermfg=darkcyan guifg=#C080FF gui=none
 "hi xmlEndTag  	ctermfg=darkcyan guifg=#C080FF gui=none
 "hi xmlTagName  	ctermfg=darkcyan guifg=#C080FF gui=none

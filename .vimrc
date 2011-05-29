@@ -24,7 +24,7 @@ set statusline=%<%f\ %m%a%=%([%R%H%Y]%)\ %-19(%3l\ of\ %L,%c%)%P
 "syn match Search /\.\%>72v/
 
 " Always write (don't ask)
-:au FocusLost * :wa
+:au FocusLost * :silent! wa
 
 " Save on quit
 set autowriteall
@@ -37,6 +37,9 @@ set expandtab
 " Only use 4 spaces for these files
 au FileType cpp,cs,java,xml setlocal softtabstop=4 shiftwidth=4
 
+" Don't highlight the current line for slow filetypes 
+au FileType ruby,xml,tex setlocal nocursorline
+
 " Background buffers
 set hidden
 
@@ -47,10 +50,10 @@ set nu
 set wildchar=<Tab> wildmenu wildmode=longest:full
 
 " Map ,, to buffer explorer
-nnoremap ,, :BufExplorer<CR>j
+nnoremap <silent> ,, :silent BufExplorer<CR>j
 
 " Space scrolls like less
-"nnoremap <Space> <C-d>
+nnoremap <Space> <C-d>
 
 " Scroll when cursor reaches top or bottom
 set scrolloff=2
