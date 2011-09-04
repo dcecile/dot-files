@@ -40,6 +40,9 @@ au FileType cpp,cs,java,xml setlocal softtabstop=4 shiftwidth=4
 " Don't highlight the current line for slow filetypes 
 au FileType ruby,xml,tex setlocal nocursorline
 
+" Custom syntax matching
+au BufNewFile,BufRead *.ctn setf cottontail
+
 " Background buffers
 set hidden
 
@@ -54,6 +57,7 @@ nnoremap <silent> ,, :silent BufExplorer<CR>j
 
 " Space scrolls like less
 nnoremap <Space> <C-d>
+nnoremap <S-Space> <C-u>
 
 " Scroll when cursor reaches top or bottom
 set scrolloff=2
@@ -101,6 +105,7 @@ vnoremap f :!fixwidth<CR>
 "set clipboard=unnamed
 
 " Search for selected text, forwards or backwards.
+" http://vim.wikia.com/wiki/Search_for_visually_selected_text
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
   \gvy/<C-R><C-R>=substitute(
