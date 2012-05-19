@@ -7,6 +7,9 @@ set nocompatible
 " Windows only looks in 'vimfiles' by default
 set runtimepath+=~/.vim
 
+" Load all filetype features
+filetype plugin indent on
+
 " Regular backspace
 set backspace=indent,eol,start
 
@@ -35,13 +38,20 @@ set shiftwidth=2
 set expandtab
 
 " Only use 4 spaces for these files
-au FileType cpp,cs,java,xml setlocal softtabstop=4 shiftwidth=4
+au FileType cs,java,xml setlocal softtabstop=4 shiftwidth=4
 
 " Don't highlight the current line for slow filetypes 
-au FileType ruby,xml,tex setlocal nocursorline
+au FileType ruby,xml,tex,vim setlocal nocursorline
+
+" Disable annoying indentation schemes
+au FileType awk setlocal indentexpr=
+
+" Don't do (slow) syntax highlighting for long lines
+set synmaxcol=128
 
 " Custom syntax matching
 au BufNewFile,BufRead *.ctn setf cottontail
+au BufNewFile,BufRead *.less set filetype=less
 
 " Background buffers
 set hidden

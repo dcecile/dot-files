@@ -52,6 +52,7 @@ hi Error		guibg=#8D2C3B guifg=White
 hi Directory	guifg=fg
 hi ErrorMsg		guibg=Red guifg=White
 hi LineNr		ctermfg=darkblue guifg=#6C6E6A
+hi CursorLineNr	ctermfg=darkblue guifg=#8C8E8A gui=none
 hi ModeMsg		gui=bold
 hi MoreMsg		gui=bold guifg=SeaGreen
 hi NonText		ctermfg=darkblue gui=bold guifg=#6C6E6A
