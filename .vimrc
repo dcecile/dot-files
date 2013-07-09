@@ -44,7 +44,7 @@ au FileType cs,java,xml setlocal softtabstop=4 shiftwidth=4
 au FileType ruby,xml,tex,vim setlocal nocursorline
 
 " Disable annoying indentation schemes
-au FileType awk setlocal indentexpr=
+au FileType awk,r setlocal indentexpr=
 
 " Don't do (slow) syntax highlighting for long lines
 set synmaxcol=128
@@ -68,6 +68,8 @@ nnoremap <silent> ,, :silent BufExplorer<CR>j
 " Space scrolls like less
 nnoremap <Space> <C-d>
 nnoremap <S-Space> <C-u>
+vnoremap <Space> <C-d>
+vnoremap <S-Space> <C-u>
 
 " Scroll when cursor reaches top or bottom
 set scrolloff=2
@@ -132,3 +134,6 @@ let python_highlight_builtins=1
 
 " Don't beep
 set visualbell t_vb=
+
+" Disable man-pages lookup
+noremap K <Nop>
