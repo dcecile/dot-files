@@ -38,7 +38,7 @@ set shiftwidth=2
 set expandtab
 
 " Only use 4 spaces for these files
-au FileType cs,java,xml setlocal softtabstop=4 shiftwidth=4
+au FileType cpp,cs,java,xml setlocal softtabstop=4 shiftwidth=4
 
 " Don't highlight the current line for slow filetypes 
 au FileType ruby,xml,tex,vim setlocal nocursorline
@@ -137,3 +137,7 @@ set visualbell t_vb=
 
 " Disable man-pages lookup
 noremap K <Nop>
+
+" Pathogen bundles
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
