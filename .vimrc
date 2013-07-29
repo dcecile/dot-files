@@ -71,6 +71,9 @@ nnoremap <S-Space> <C-u>
 vnoremap <Space> <C-d>
 vnoremap <S-Space> <C-u>
 
+" Easy paste
+noremap ; "+p
+
 " Scroll when cursor reaches top or bottom
 set scrolloff=2
 

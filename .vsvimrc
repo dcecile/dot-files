@@ -1,6 +1,9 @@
 " Exit Visual mode
 vnoremap <C-[> <Esc>
 
+" Paste
+noremap ; "+p
+
 " Searching
 set ignorecase
 set smartcase
