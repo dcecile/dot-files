@@ -1,0 +1,30 @@
+[
+    {
+        "key": "ctrl+shift+i",
+        "command": "python.sortImports",
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.terminal.focus",
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+n",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<C-n>"
+    },
+    {
+      "key": "ctrl+shift+b",
+      "command": "-workbench.action.tasks.build",
+      "when": "taskCommandsRegistered"
+    },
+    {
+      "key": "ctrl+shift+b",
+      "command": "workbench.action.toggleActivityBarVisibility"
+    }
+]

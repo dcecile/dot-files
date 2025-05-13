@@ -1,0 +1,16 @@
+[pull]
+	rebase = true
+[merge]
+	autoStash = true
+[diff]
+	noprefix = true
+[user]
+	name = Dan Cecile
+	email = dancecile@gmail.com
+	signingkey = /home/geecko/.ssh/id_rsa.pub
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true

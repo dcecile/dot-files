@@ -1,1 +1,0 @@
-hi link javaScript NONE
