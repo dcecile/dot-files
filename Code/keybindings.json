@@ -24,7 +24,7 @@
       "when": "taskCommandsRegistered"
     },
     {
-      "key": "ctrl+shift+b",
+      "key": "cmd+shift+b",
       "command": "workbench.action.toggleActivityBarVisibility"
     }
 ]

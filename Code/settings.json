@@ -4,33 +4,44 @@
     "editor.formatOnSave": true
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[python]": {
+    "editor.formatOnSave": true
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
     "editor.formatOnSave": true
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
+  },
   "breadcrumbs.enabled": true,
   "editor.selectionClipboard": false,
   "editor.fontFamily": "'Hack'",
-  "editor.fontSize": 15,
+  "editor.fontSize": 13,
   "editor.fontWeight": "400",
   "editor.formatOnPaste": true,
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.letterSpacing": 0,
-  "editor.lineHeight": 22,
+  "editor.lineHeight": 18,
   "editor.minimap.renderCharacters": false,
-  "editor.scrollBeyondLastLine": false,
+  "editor.scrollBeyondLastLine": true,
   "editor.stickyScroll.enabled": true,
   "editor.tokenColorCustomizations": {},
   "editor.unicodeHighlight.includeStrings": false,
   "editor.wordWrap": "on",
+  "workbench.activityBar.orientation": "vertical",
   "explorer.confirmDragAndDrop": false,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
@@ -100,15 +111,26 @@
     "workbench.action.terminal.toggleFindWholeWordTerminalFocus",
     "workbench.action.terminal.toggleTerminal"
   ],
-  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.fontSize": 13,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "custom",
   "workbench.colorCustomizations": {},
-  "workbench.colorTheme": "Sanguine",
+  "workbench.colorTheme": "Default Dark+",
   "workbench.editor.showTabs": "single",
   "workbench.iconTheme": "vs-minimal",
   "workbench.settings.openDefaultSettings": false,
   "workbench.editor.enablePreview": false,
-  "window.customTitleBarVisibility": "auto"
+  "window.customTitleBarVisibility": "auto",
+  "security.promptForLocalFileProtocolHandling": false,
+  "git.autofetch": false,
+  "[markdown]": {
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 75
+  },
+  "diffEditor.ignoreTrimWhitespace": true,
+  "rust-analyzer.cargo.allTargets": true,
+  "rust-analyzer.cargo.targetDir": "target-analyzer",
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.trace.server": "verbose"
 }

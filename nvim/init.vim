@@ -93,6 +93,13 @@ vnoremap <Leader>h :HopAnywhereCurrentLineBC<CR>
 nnoremap <Leader>l :HopAnywhereCurrentLineAC<CR>
 vnoremap <Leader>l :HopAnywhereCurrentLineAC<CR>
 
+" Go to next error
+if exists('g:vscode')
+  nnoremap <Leader>; :call VSCodeNotify('editor.action.marker.next')<CR>
+else
+  nnoremap <Leader>; :lua vim.diagnostic.goto_next()<CR>
+endif
+
 " Language support
 let g:elm_setup_keybindings = 0
 
