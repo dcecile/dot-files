@@ -1,0 +1,99 @@
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+plugins=()
+
+source $ZSH/oh-my-zsh.sh
+
+s() { cd "$(echo "$PWD" | sed -E "s/cursor[0-9]+/cursor$1/")"; }
+
+g() { git $@; }
+gA() { git add $@; }
+gC() { git record $@; }
+gD() { git diff --cached $@; }
+gG() { git log $@; }
+gO() { git checkout $@; }
+gR() { git rebase --interactive $@; }
+gS() { gh pr view --web $@; }
+gW() { git reword $@; }
+ga() { git add --all $@; }
+gb() { git checkout -b $@; }
+gbd() { git branch -D $@; }
+gbh() { git hide $(git smartlog | grep 'This is a\|Checkpoint before' | cut -d " " -f 3) $@; }
+gc() { git amend $@; }
+gd() { git diff $@; }
+gdet() { git checkout --detach HEAD; }
+ge() { git restore --staged $@; }
+gg() { git status $@; }
+gl() { git fetch --all && git branch -f main origin/main; }
+gn() { git next --interactive $@; }
+go() { git checkout main $@; }
+gp() { git prev --interactive $@; }
+gr() { git rebase main; }
+gri() { git rebase -i $@; }
+gra() { git rebase --abort; }
+grc() { git rebase --continue; }
+gs() { git submit --create $@; }
+gss() { git submit --forge github --create --draft $@; }
+gw() { git sw --interactive $@; }
+
+cL() { cargo fixit --clippy --workspace --all-targets --all-features --allow-dirty --broken-code $@ && cargo clippy --workspace --all-targets --all-features -- -D warnings; }
+cR() { cargo run --release $@; }
+cT() { cargo nextest run --release --no-fail-fast $@; }
+cb() { cargo build --bin server --profile dev-no-debug-symbols && lldb ./target/dev-no-debug-symbols/server; }
+cf() { cargo fmt --all $@; }
+cl() { cargo fixit --clippy --all-targets --all-features --allow-dirty --broken-code --package $@ && cargo clippy --all-targets --all-features --package $1 -- -D warnings; }
+cm() { cargo run --profile dev-no-debug-symbols --package nobie-cli -- metaprompt $@; }
+cr() { cargo run --profile dev-no-debug-symbols $@; }
+ct() { cargo test --profile dev-no-debug-symbols --tests --package $1 --lib ${@:2}; }
+ctt() { cargo test --profile dev-no-debug-symbols --package $1 --test $2 ${@:3}; }
+
+# Lint Changed Crates: run clippy only on crates with modified files
+cld() {
+    # Find changed Cargo.toml files and infer crate directories
+    local roots
+    roots=$(git diff --name-only --diff-filter=ACMRTUXB HEAD | grep '^rust/.*/Cargo\.toml$' | xargs -I{} dirname {} | sort -u)
+    if [ -z "$roots" ]; then
+        # Fallback: detect crates by changed .rs files mapping to nearest Cargo.toml
+        roots=$(git diff --name-only --diff-filter=ACMRTUXB HEAD | grep '^rust/.*\.rs$' | xargs -I{} dirname {} | xargs -I{} bash -lc 'd="{}"; while [ "$d" != "." ] && [ "$d" != "/" ]; do if [ -f "$d/Cargo.toml" ]; then echo "$d"; break; fi; d=$(dirname "$d"); done' | sort -u)
+    fi
+    if [ -z "$roots" ]; then
+        echo "No changed Rust crates detected."
+        return 0
+    fi
+    # Convert crate paths to package names from Cargo.toml
+    local pkgs
+    pkgs=$(echo "$roots" | xargs -I{} bash -lc 'grep -m1 "^name\s*=\s*\"" {}/Cargo.toml | sed -E "s/^name\s*=\s*\"([^\"]+)\".*/\1/"')
+    if [ -z "$pkgs" ]; then
+        echo "No package names resolved from changed crates."
+        return 1
+    fi
+    echo "Linting changed crates: $pkgs"
+    for p in $pkgs; do
+        cargo fixit --clippy --all-targets --all-features --allow-dirty --broken-code --package "$p" && cargo clippy --all-targets --all-features --package "$p" -- -D warnings || return 1
+    done
+}
+
+if [ -e $HOME/.nix-profile/etc/extra-setup.sh ]; then source $HOME/.nix-profile/etc/extra-setup.sh; fi
+
+# BUSTED: /usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Users/dan/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/Users/dan/.cursor/extensions/ms-python.debugpy-2025.6.0-darwin-arm64/bundled/scripts/noConfigScripts
+# OK: /Users/dan/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin
+if [[ "$PATH" =~ debugpy ]]; then
+    echo "BUSTED PATH"
+    export PATH="$OK_PATH"
+else
+    export OK_PATH="$PATH"
+fi
+
+# pnpm
+export PNPM_HOME="/Users/dan/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

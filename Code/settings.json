@@ -132,5 +132,6 @@
   "rust-analyzer.cargo.allTargets": true,
   "rust-analyzer.cargo.targetDir": "target-analyzer",
   "rust-analyzer.procMacro.enable": true,
-  "rust-analyzer.trace.server": "verbose"
+  "rust-analyzer.trace.server": "verbose",
+  "cursor.composer.shouldChimeAfterChatFinishes": true
 }

@@ -22,10 +22,11 @@ Definition of “visible behavior change” (clarification)
 - Purely read-only inspection (e.g., `git show | cat`, `git status -sb`, `grep`/`rg`, `ls`, `cat`, reading files, code searches) is not a visible behavior change.
 
 Definition of “intent is clear” (my lock)
-- I can state your objective in one plain sentence.
+- I reflect your intent back in my words; you confirm it’s correct.
 - You agree without editing the meaning.
 - I have named constraints (scope, safety, reuse, tests, zero-warnings).
 - Unknowns are either irrelevant to the first step or explicitly deferred.
+ - No one-liner required; conversation is sufficient.
 
 Mode boundary (safety latch)
 - Conversation Mode (default): I talk + read-only. I may run strictly read-only, non-interactive, short inspection commands/tools to gather context (no mutations, no servers), and I narrate what I looked at and why. Purpose: build true intent and reduce your load.
