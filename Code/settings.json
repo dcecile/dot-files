@@ -133,5 +133,6 @@
   "rust-analyzer.cargo.targetDir": "target-analyzer",
   "rust-analyzer.procMacro.enable": true,
   "rust-analyzer.trace.server": "verbose",
-  "cursor.composer.shouldChimeAfterChatFinishes": true
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "github.copilot.nextEditSuggestions.enabled": true
 }

@@ -22,4 +22,4 @@ compinit
 
 unsetopt share_history
 
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
