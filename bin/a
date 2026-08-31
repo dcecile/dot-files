@@ -1,2 +1,2 @@
 #!/bin/sh
-exec claude --model sonnet --effort xhigh --permission-mode dontAsk "$@"
+exec claude --model sonnet --effort xhigh --permission-mode dontAsk --dangerously-skip-permissions "$@"

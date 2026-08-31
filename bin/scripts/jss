@@ -30,8 +30,8 @@ fi
 BOOKMARK=${BOOKMARKS[0]}
 
 # Extract the title and body from the bookmark's revision description.
-TITLE=$(jj show -r "$BOOKMARK" -T 'description.first_line()')
-BODY=$(jj show -r "$BOOKMARK" -T 'description.lines().skip(1).join("\n")')
+TITLE=$(jj show -r "$BOOKMARK" --no-patch -T 'description.first_line()')
+BODY=$(jj show -r "$BOOKMARK" --no-patch -T 'description.lines().skip(1).join("\n")')
 
 if [[ -z "$TITLE" ]]; then
   echo "Error: The bookmarked revision has no description."

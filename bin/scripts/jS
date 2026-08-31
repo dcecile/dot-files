@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# jS - View the GitHub PR for the current Jujutsu bookmark.
+
+set -euo pipefail
+
+# Preserve gS-style explicit PR, branch, or URL arguments.
+if (( $# > 0 )); then
+  exec gh pr view --web "$@"
+fi
+
+if ! jj root >/dev/null 2>&1; then
+  echo "Error: Not in a jj repository." >&2
+  exit 1
+fi
+
+# A PR corresponds to a jj bookmark. Require exactly one bookmark at @ so
+# the command does not guess when the working copy is anonymous or ambiguous.
+mapfile -t BOOKMARKS < <(jj bookmark list -r @ -T 'name ++ "\n"')
+
+if (( ${#BOOKMARKS[@]} != 1 )); then
+  echo "Error: Expected exactly one jj bookmark at @; found ${#BOOKMARKS[@]}." >&2
+  exit 1
+fi
+
+exec gh pr view --web "${BOOKMARKS[0]}"

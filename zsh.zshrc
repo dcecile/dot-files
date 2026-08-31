@@ -52,7 +52,7 @@ jd() { jj diff "$@"; }
 jD() { jj diff --revision @- "$@"; }
 jG() { jj log "$@"; }
 jGG() { jj log -T builtin_log_compact_full_description "$@"; }
-jb() { jj bookmark create "$@"; }
+jb() { jj bookmark set "$@"; }
 jl() { jj git fetch --all-remotes "$@" && jj bookmark set main --revision main@origin --allow-backwards; }
 jo() { jj edit main "$@"; }
 jr() { jj rebase --destination main; }
