@@ -1,0 +1,12 @@
+{
+  "colorScheme": "tokyo night",
+  "enableTelemetry": false,
+  "trustedWorkspaces": [
+    "/home/geecko/code/pentagram"
+  ],
+  "statusLine": {
+    "type": "command",
+    "command": "~/.gemini/antigravity-cli/statusline_helper.py",
+    "enabled": true
+  }
+}

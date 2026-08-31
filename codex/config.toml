@@ -1,0 +1,5 @@
+# Codex statusline settings ported from dot-files-nobie.
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "run-state", "context-remaining", "five-hour-limit", "weekly-limit"]
+status_line_use_colors = true
