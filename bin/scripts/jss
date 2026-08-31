@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# jss - Jujutsu Sync Status
+# Pushes the current bookmark and syncs its description with a GitHub PR.
+
+set -euo pipefail
+
+# Ensure we are in a jj repository.
+if ! jj root >/dev/null 2>&1; then
+  echo "Error: Not in a jj repository."
+  exit 1
+fi
+
+# A GitHub PR corresponds to a jj bookmark. Require the working-copy revision
+# to be the target of exactly one local bookmark, like Git's current branch.
+mapfile -t BOOKMARKS < <(jj bookmark list -r @ -T 'name ++ "\n"')
+
+if (( ${#BOOKMARKS[@]} == 0 )); then
+  echo "Error: The working-copy revision has no local bookmark."
+  echo "Create one with: jj bookmark create <name>"
+  exit 1
+fi
+
+if (( ${#BOOKMARKS[@]} > 1 )); then
+  echo "Error: The working-copy revision has multiple bookmarks:"
+  printf '  %s\n' "${BOOKMARKS[@]}"
+  exit 1
+fi
+
+BOOKMARK=${BOOKMARKS[0]}
+
+# Extract the title and body from the bookmark's revision description.
+TITLE=$(jj show -r "$BOOKMARK" -T 'description.first_line()')
+BODY=$(jj show -r "$BOOKMARK" -T 'description.lines().skip(1).join("\n")')
+
+if [[ -z "$TITLE" ]]; then
+  echo "Error: The bookmarked revision has no description."
+  exit 1
+fi
+
+echo "Pushing $BOOKMARK to origin..."
+jj git push --remote origin --bookmark "$BOOKMARK"
+
+if gh pr view "$BOOKMARK" >/dev/null 2>&1; then
+  echo "Updating existing PR for $BOOKMARK..."
+  gh pr edit "$BOOKMARK" --title "$TITLE" --body "$BODY"
+else
+  echo "Creating new PR for $BOOKMARK..."
+  gh pr create --title "$TITLE" --body "$BODY" --head "$BOOKMARK" --draft
+fi
