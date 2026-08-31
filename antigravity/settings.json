@@ -1,6 +1,8 @@
 {
   "colorScheme": "tokyo night",
   "enableTelemetry": false,
+  "model": "Gemini 3.7 Flash (High)",
+  "showFeedbackSurvey": false,
   "trustedWorkspaces": [
     "/home/geecko/code/pentagram"
   ],

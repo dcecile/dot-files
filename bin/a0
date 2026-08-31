@@ -1,0 +1,2 @@
+#!/bin/sh
+exec claude --model haiku --effort high --permission-mode dontAsk "$@"

@@ -32,7 +32,7 @@ def get_harness_info():
     except Exception:
         pass
 
-    # Normalize model display (e.g., "gemini 3.5 flash high")
+    # Normalize model display (e.g., "gemini 3.7 flash high")
     model_display = model_name.lower().replace(" (", " ").replace(")", "")
 
     # 2. Get path with tilde expansion

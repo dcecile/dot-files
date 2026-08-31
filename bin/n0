@@ -1,0 +1,2 @@
+#!/bin/sh
+exec agent --model composer-2.5-fast --yolo "$@"

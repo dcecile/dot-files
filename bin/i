@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Ensure Antigravity uses the latest Flash model and has no feedback survey.
+python3 -c '
+import json
+import os
+
+path = os.path.expanduser("~/.gemini/antigravity-cli/settings.json")
+try:
+    with open(path, "r") as f:
+        data = json.load(f)
+except Exception:
+    data = {}
+data["model"] = "Gemini 3.7 Flash (High)"
+data["showFeedbackSurvey"] = False
+with open(path, "w") as f:
+    json.dump(data, f, indent=2)
+    f.write("\n")
+'
+
+exec agy --dangerously-skip-permissions "$@"

@@ -1,0 +1,2 @@
+#!/bin/sh
+exec claude --model fable --effort xhigh --permission-mode dontAsk "$@"
