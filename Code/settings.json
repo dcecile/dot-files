@@ -134,5 +134,6 @@
   "rust-analyzer.procMacro.enable": true,
   "rust-analyzer.trace.server": "verbose",
   "cursor.composer.shouldChimeAfterChatFinishes": true,
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "workbench.activityBar.location": "hidden"
 }

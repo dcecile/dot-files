@@ -154,6 +154,7 @@ endif
 let g:elm_format_autosave = 1
 
 " Copy/paste
+let g:clipboard = 'xclip'
 vnoremap <Leader>y "+y
 vnoremap <Leader>d "+d
 nnoremap <Leader>p "+p
