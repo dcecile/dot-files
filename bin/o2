@@ -1,2 +1,2 @@
 #!/bin/sh
-exec codex --dangerously-bypass-approvals-and-sandbox --ask-for-approval never -m gpt-5.6-sol -c 'model_reasoning_effort="xhigh"' "$@"
+exec codex --dangerously-bypass-approvals-and-sandbox -m gpt-5.6-sol -c 'model_reasoning_effort="xhigh"' "$@"

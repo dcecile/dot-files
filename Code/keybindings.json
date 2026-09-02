@@ -24,7 +24,23 @@
       "when": "taskCommandsRegistered"
     },
     {
+      "key": "ctrl+b",
+      "command": "workbench.action.toggleSidebarVisibility",
+      "when": "isLinux || isWindows"
+    },
+    {
+      "key": "cmd+b",
+      "command": "workbench.action.toggleSidebarVisibility",
+      "when": "isMac"
+    },
+    {
+      "key": "ctrl+shift+b",
+      "command": "workbench.action.toggleActivityBarVisibility",
+      "when": "isLinux || isWindows"
+    },
+    {
       "key": "cmd+shift+b",
-      "command": "workbench.action.toggleActivityBarVisibility"
+      "command": "workbench.action.toggleActivityBarVisibility",
+      "when": "isMac"
     }
 ]

@@ -92,8 +92,10 @@ function jj_or_git_prompt() {
     info="${info:gs/%/%%}"
     printf '%s%s%s' "$ZSH_THEME_GIT_PROMPT_PREFIX" "$info" "$ZSH_THEME_GIT_PROMPT_SUFFIX"
   else
-    git_prompt_info
-    git_prompt_status
+    # Async Oh My Zsh Git helpers retain their newline when called directly.
+    # Keep each command substitution separate so zsh strips it before joining
+    # the two pieces into this prompt.
+    printf '%s%s' "$(git_prompt_info)" "$(git_prompt_status)"
   fi
 }
 
